@@ -3,9 +3,10 @@
 #include<math.h>
 #include<stdio.h>
 
-void main()
+int main()
 {
 	double M[5][5], RHS[5], x[5];
+	double residuum, eps = 1.E-8;
 
 	M[0][0] = 7.;
 	M[0][1] = 4.;
@@ -50,6 +51,44 @@ void main()
 		x[i] = 0.;
 	}
 
+	do { //INTERATIONS - LOOP
+		for (int i = 0; i <= n - 1; i++) //Loop for all equations
+		{
+			x[i] = RHS[i];
 
-//	return(0);
+			for (int j = 0; j <= n - 1; j++)
+			{
+				if (i == j) continue; // do not the following, but still in the loop
+				x[i] = RHS[i] - M[i][j] * x[j];
+			}
+			// if break, jump to here. Break the loop 
+			x[i] = x[i] / M[i][i];
+		}
+		
+		residuum = 0.;
+		for (int i = 0; i <= n - 1; i++) //Loop for all equations
+		{
+			double r = RHS[i];
+			for (int j = 0; j <= n - 1; j++)
+			{
+				r = r - M[i][j] * x[j];
+			}
+			residuum = residuum + r * r;
+			
+		}
+		
+		residuum = sqrt(residuum);
+		
+		printf("%20.5lf\n", residuum);
+
+
+	} while (residuum > eps);
+	
+	for (int i = 0; i <= n; i++)
+	{
+	    printf("%10.5lf\n", x[i]);
+	}
+
+	scanf_s("%i", &n);
+    return(0);
 }
