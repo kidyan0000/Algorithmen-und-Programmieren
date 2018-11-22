@@ -3,10 +3,10 @@
 #include<math.h>
 #include<stdio.h>
 
-int main()
+void main()
 {
 	double M[5][5], RHS[5], x[5];
-	double residuum, eps = 1.E-8;
+	double residuum, eps = 1.e-8;
 
 	M[0][0] = 7.;
 	M[0][1] = 4.;
@@ -90,5 +90,5 @@ int main()
 	}
 
 	scanf_s("%i", &n);
-    return(0);
+  //  return(0);
 }
