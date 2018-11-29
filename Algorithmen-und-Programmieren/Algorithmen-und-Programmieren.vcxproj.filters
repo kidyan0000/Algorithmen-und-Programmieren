@@ -15,8 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="gauss_sei.cpp">
+    <ClCompile Include="least_square.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="xy.dat" />
   </ItemGroup>
 </Project>
