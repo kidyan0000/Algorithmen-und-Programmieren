@@ -8,7 +8,7 @@ void gauss(double *m, double *x, double *r, int n, int nax);
 void main()
 {
 	double sx, sy;
-	double *M, *x, *y, *RHS, *a;
+	double *M, *x, *y, *RHS, *a; //double ist der Datentypen von Inhalt
 	int m = 0;
 	int n = 5; //n ist Polynomgrad
 
@@ -71,8 +71,8 @@ void main()
 		printf("%10.6lf \n", a[i]);
 	}
 
-	printf("%5i\n", m);
-	scanf_s("%i", m);
+	printf("%5i\n", m); //Aufruf der Konsole 
+	scanf_s("%i", &m); //Aufruf der Eingabe &m
 
 	delete[] M;
 	delete[] RHS;
