@@ -13,4 +13,4 @@ hold on; %HALTEN BILDINHALT FEST
 x1 = kurve(:,1);
 y1 = kurve(:,2);
 
-plot(x1,y1,'or');
+plot(x1,y1);
