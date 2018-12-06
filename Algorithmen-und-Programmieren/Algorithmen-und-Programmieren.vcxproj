@@ -19,11 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="gauss_func.cpp" />
-    <ClCompile Include="least_square.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="xy.dat" />
+    <ClCompile Include="newt.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
