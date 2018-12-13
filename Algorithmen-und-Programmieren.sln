@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28306.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithmen-und-Programmieren", "Algorithmen-und-Programmieren\Algorithmen-und-Programmieren.vcxproj", "{B91C1BE7-7BAA-485F-961B-9E766DE6B4A1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{042A2074-4A94-4889-B4BB-A800771D88D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
