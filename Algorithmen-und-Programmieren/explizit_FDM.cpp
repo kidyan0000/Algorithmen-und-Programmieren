@@ -36,6 +36,11 @@ void main()
 	FILE *james;
 	fopen_s(&james, "temperatur.dat", "w");
 	// james = fopeen("temperatur.dat", "w");
+	for (int j = 0; j <= m - 1; j++)
+	{
+		fprintf_s(james, "%20.7lf", T_old[j]);
+	}
+
 	for (int i = 1; i <= m_zeit; i++)
 	{
 		// Randbedingung
