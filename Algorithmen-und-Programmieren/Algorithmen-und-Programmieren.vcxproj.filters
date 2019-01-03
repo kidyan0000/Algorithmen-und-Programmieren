@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="biegebalk.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="tomy.cpp">
+    <ClCompile Include="explizit_FDM.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
