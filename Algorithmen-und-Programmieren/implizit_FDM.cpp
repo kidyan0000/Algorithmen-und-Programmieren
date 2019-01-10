@@ -4,6 +4,12 @@
 #include <math.h>
 
 void tomy(int il, int iu, double *b, double *d, double *a, double *c, double *l);
+/*
+void bsp(int &a);
+
+bsp(a);
+bsp(*a);
+*/
 
 void main()
 {
