@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="tomy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="implizit_FDM.cpp">
+    <ClCompile Include="schwingung.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
