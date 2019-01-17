@@ -24,8 +24,11 @@ void main()
 	x[0] = x0;	y[0] = v0;
 
 	// RUNGE-KUTTA-VERFAHREB
-	for (int i = 0; i <= n - 1; i++)
-	{
+	// musst from i=1 run!!!
+	for (int i = 1; i <= n - 1; i++)
+	{	
+		t[i] = t[i - 1] + dt;
+
 		k1y = -c / m * x[i - 1];
 		k1x = y[i - 1];
 
@@ -42,8 +45,16 @@ void main()
 		ky = (k1y + 2.*k2y + 2.*k3y + k4y) / 6.;
 
 		x[i] = x[i - 1] + kx * dt;
-		y[i] = y[i - 1] + kx * dt;
+		y[i] = y[i - 1] + ky * dt;
 	}
+
+	FILE *fin;
+	fopen_s(&fin, "schiwng.dat", "w");
+	for (int i = 0; i <= n - 1; i++)
+	{
+		fprintf_s(fin, "%15.6lf %15.6lf %15.6lf\n", t[i], x[i], y[i]);
+	}
+	fclose(fin);
 
 
 	delete[] x;
