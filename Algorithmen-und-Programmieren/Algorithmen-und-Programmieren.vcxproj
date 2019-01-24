@@ -19,7 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="flight_ball.cpp" />
+    <ClCompile Include="cw_wert.cpp" />
+    <ClCompile Include="flight_ball_real.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

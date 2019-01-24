@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="flight_ball.cpp">
+    <ClCompile Include="cw_wert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="flight_ball_real.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
