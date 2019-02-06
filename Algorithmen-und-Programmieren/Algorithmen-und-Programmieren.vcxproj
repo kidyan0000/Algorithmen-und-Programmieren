@@ -19,8 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cw_wert.cpp" />
-    <ClCompile Include="flight_ball_real.cpp" />
+    <ClCompile Include="aufg01.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="kreis.dat" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

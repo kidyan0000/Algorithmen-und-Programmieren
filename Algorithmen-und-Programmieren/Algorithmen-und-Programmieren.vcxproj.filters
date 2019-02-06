@@ -15,11 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cw_wert.cpp">
+    <ClCompile Include="aufg01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="flight_ball_real.cpp">
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="kreis.dat">
       <Filter>Source Files</Filter>
-    </ClCompile>
+    </None>
   </ItemGroup>
 </Project>

@@ -11,7 +11,7 @@ void main()
 {
 	double x1, y1, x2, y2, x3, y3;
 	double xm, ym, R;
-	
+
 	printf("Gebe x1 ein:\n");
 	scanf_s("%lf", &x1);
 	printf("Gebe y1 ein:\n");
@@ -24,12 +24,12 @@ void main()
 	scanf_s("%lf", &x3);
 	printf("Gebe y3 ein:\n");
 	scanf_s("%lf", &y3);
-	
+
 	xm = kreis( x1, y1, x2, y2, x3, y3, 1);
 	ym = kreis( x1, y1, x2, y2, x3, y3, 2);
 	R = kreis( x1, y1, x2, y2, x3, y3, 3);
 	
-	printf("xm = %5.2lf, ym = %5.2lf, R = %5.2lf\n", xm, ym, R); /*xx,xx z.B 06.22*/
+	printf("xm = %5.1lf, ym = %5.2lf, R = %5.3lf\n", xm, ym, R); /*xx,xx z.B 06.22*/
 	scanf_s("%lf", &R);
 }	
 	
