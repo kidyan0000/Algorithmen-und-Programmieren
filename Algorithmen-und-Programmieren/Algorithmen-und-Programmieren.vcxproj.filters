@@ -15,13 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="aufg01.cpp">
+    <ClCompile Include="aufg02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="kreis.dat">
-      <Filter>Source Files</Filter>
-    </None>
   </ItemGroup>
 </Project>
