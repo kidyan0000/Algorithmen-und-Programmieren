@@ -15,8 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="aufg02.cpp">
+    <ClCompile Include="aufg03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="schwingung.dat" />
   </ItemGroup>
 </Project>

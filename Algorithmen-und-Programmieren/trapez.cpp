@@ -44,7 +44,7 @@ double trapez( double *x; double *y, int n)
   
   for( int i=0; i<=n-2; i++)
   {
-	  I = I + ( y[i] + y[i+2] )/2. * (x[i+1] - x[i]);
+	  I = I + ( y[i] + y[i+1] )/2. * (x[i+1] - x[i]);
   }
   
   
