@@ -16,14 +16,14 @@ void main()
 	double A, rho, t, g, m;
 	double cw1 = 0.2, cw2 = 5;
 
-	double v, a;
-	double dt = 0.001;
+	double v;
+	double dt = 0.1;
 
 	v = 0;
-	a = 0;
 	g = 9.81;
-	A = 1;
-	m = 1;
+	A = 0.01;
+	m = 0.2;
+	rho = 1.225;
 	
 	double H1 = 5000, H2 = 2000, H=5000;
 
@@ -39,49 +39,47 @@ void main()
 		v1 = v;
 		a1 = g - ((cw1*rho / 2 * v1*v1*A) / m);
 		
-		v2 = v1 + a * dt / 2;
+		v2 = v1 + a1 * dt / 2;
 		a2 = g - ((cw1*rho / 2 * v2*v2*A) / m);
 
-		v3 = v2 + a * dt / 2;
+		v3 = v2 + a2 * dt / 2;
 		a3 = g - ((cw1*rho / 2 * v3*v3*A) / m);
 
-		v4 = v3 + a * dt;
+		v4 = v3 + a3 * dt;
 		a4 = g - ((cw1*rho / 2 * v3*v3*A) / m);
 
-		v = 1 / 6 * (v1 + 2 * v2 + 2 * v3 + v4);
-		a = 1 / 6 * (a1 + 2 * a2 + 2 * a3 + a4);
+		v = 1. / 6. * (v1 + 2 * v2 + 2 * v3 + v4); // ./.
 
 		H = H - v * dt;
 
-		fprintf_s(fin, "%lf %lf", v, H);
+		fprintf_s(fin, "%lf %lf \n", v, H);
 		
 		count++;
 
-	} while (H > H1);
+	} while (H > H2);
 
 	double t1 = count * dt;
-	fprintf_s(fin, "The total time is %lf", t1);
+	fprintf_s(fin, "The total time is %lf \n", t1);
 
 	do
 	{
 		v1 = v;
 		a1 = g - ((cw2*rho / 2 * v1*v1*A) / m);
 
-		v2 = v1 + a * dt / 2;
+		v2 = v1 + a1 * dt / 2;
 		a2 = g - ((cw2*rho / 2 * v2*v2*A) / m);
 
-		v3 = v2 + a * dt / 2;
+		v3 = v2 + a2 * dt / 2;
 		a3 = g - ((cw2*rho / 2 * v3*v3*A) / m);
 
-		v4 = v3 + a * dt;
+		v4 = v3 + a3 * dt;
 		a4 = g - ((cw2*rho / 2 * v3*v3*A) / m);
 
-		v = 1 / 6 * (v1 + 2 * v2 + 2 * v3 + v4);
-		a = 1 / 6 * (a1 + 2 * a2 + 2 * a3 + a4);
+		v = 1. / 6. * (v1 + 2 * v2 + 2 * v3 + v4);
 
 		H = H - v * dt;
 
-		fprintf_s(fin, "%lf %lf", v, H);
+		fprintf_s(fin, "%lf %lf \n", v, H);
 
 		count++;
 

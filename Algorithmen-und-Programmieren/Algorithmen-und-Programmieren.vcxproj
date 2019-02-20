@@ -19,10 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="aufg04.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="aufg04_dat.dat" />
+    <ClCompile Include="aufg05.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
