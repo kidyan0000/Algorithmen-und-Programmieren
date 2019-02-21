@@ -29,6 +29,7 @@ void main()
 
 	double v1, v2, v3, v4;
 	double a1, a2, a3, a4;
+	double kz, kv;
 
 
 	FILE *fin;
@@ -48,9 +49,11 @@ void main()
 		v4 = v3 + a3 * dt;
 		a4 = g - ((cw1*rho / 2 * v3*v3*A) / m);
 
-		v = 1. / 6. * (v1 + 2 * v2 + 2 * v3 + v4); // ./.
+		kz = 1. / 6. * (v1 + 2 * v2 + 2 * v3 + v4); // ./.
+		kv = 1. / 6. * (a1 + 2 * a2 + 2 * a3 + a4);
 
-		H = H - v * dt;
+		H = H - kz * dt; // need both H and v
+		v = v + kv * dt;
 
 		fprintf_s(fin, "%lf %lf \n", v, H);
 		
@@ -75,9 +78,11 @@ void main()
 		v4 = v3 + a3 * dt;
 		a4 = g - ((cw2*rho / 2 * v3*v3*A) / m);
 
-		v = 1. / 6. * (v1 + 2 * v2 + 2 * v3 + v4);
+		kz = 1. / 6. * (v1 + 2 * v2 + 2 * v3 + v4); // ./.
+		kv = 1. / 6. * (a1 + 2 * a2 + 2 * a3 + a4);
 
-		H = H - v * dt;
+		H = H - kz * dt;
+		v = v + kv * dt;
 
 		fprintf_s(fin, "%lf %lf \n", v, H);
 
