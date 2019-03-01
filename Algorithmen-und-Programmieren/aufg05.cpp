@@ -47,7 +47,7 @@ void main()
 		a3 = g - ((cw1*rho / 2 * v3*v3*A) / m);
 
 		v4 = v3 + a3 * dt;
-		a4 = g - ((cw1*rho / 2 * v3*v3*A) / m);
+		a4 = g - ((cw1*rho / 2 * v4*v4*A) / m);
 
 		kz = 1. / 6. * (v1 + 2 * v2 + 2 * v3 + v4); // ./.
 		kv = 1. / 6. * (a1 + 2 * a2 + 2 * a3 + a4);
@@ -76,7 +76,7 @@ void main()
 		a3 = g - ((cw2*rho / 2 * v3*v3*A) / m);
 
 		v4 = v3 + a3 * dt;
-		a4 = g - ((cw2*rho / 2 * v3*v3*A) / m);
+		a4 = g - ((cw2*rho / 2 * v4*v4*A) / m);
 
 		kz = 1. / 6. * (v1 + 2 * v2 + 2 * v3 + v4); // ./.
 		kv = 1. / 6. * (a1 + 2 * a2 + 2 * a3 + a4);
