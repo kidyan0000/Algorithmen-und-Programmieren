@@ -32,41 +32,37 @@ void main() // void
 	do
 	{
 		double S, F_w;
-		double time = n * dt;
-		fprintf_s(fin, "%10.8lf %10.8lf %10.8lf \n", time, z, w);
+
 
 		//
-		S = schub(z, w, m);
-		F_w = c_w * rho / 2. * w * w *A;
-
-		kw1 = (S - F_w - G) / m; // minus - richutng
-		w1 = w + kw1 * dt;
-		kz1 = w1;
-		z1 = z + kz1 * dt;
-		//
+		w1 = w;
+		z1 = z; // first timestep not times deltaT
 		S = schub(z1, w1, m);
 		F_w = c_w * rho / 2. * w1 * w1 *A;
+		kw1 = (S - F_w - G) / m; // minus - richutng		
+		kz1 = w1;
 
-		kw2 = (S - F_w - G) / m;
-		w2 = w1 + kw2 * dt / 2.;
-		kz2 = w2;
-		z2 = z1 + kz2 * dt / 2.;
 		//
+		w2 = w + kw1 * dt/2.; // always using w abd z as base
+		z2 = z + kz1 * dt/2.;
 		S = schub(z2, w2, m);
 		F_w = c_w * rho / 2. * w2 * w2 *A;
-
-		kw3 = (S - F_w - G) / m;
-		w3 = w2 + kw3 * dt / 2.;
-		kz3 = w3;
-		z3 = z2 + kz3 * dt / 2.;
+		kw2 = (S - F_w - G) / m;
+		kz2 = w2;
 		//
+		w3 = w + kw2 * dt/2.;
+		z3 = z + kz2 * dt/2.;
 		S = schub(z3, w3, m);
 		F_w = c_w * rho / 2. * w3 * w3 *A;
-
+		kw3 = (S - F_w - G) / m;
+		kz3 = w3;
+		//
+		w4 = w + kw3 * dt;
+		z4 = z + kz3 * dt;
+		S = schub(z4, w4, m);
+		F_w = c_w * rho / 2. * w4 * w4 *A;
 		kw4 = (S - F_w - G) / m;
-		w4 = w3 + kw4 * dt;
 		kz4 = w4;
-		z4 = z3 + kz4 * dt;
 
 		kz = 1. / 6.*(kz1 + 2 * kz2 + 2 * kz3 + kz4);
 		kw = 1. / 6.*(kw1 + 2 * kw2 + 2 * kw3 + kw4);
@@ -75,58 +71,14 @@ void main() // void
 		w = w + kw * dt;
 
 		n++;
-
-
-	} while (z < 40000);
-
-	fprintf_s(fin, "now there are no S force \n");
-
-	do
-	{
-		double S, F_w;
-
 		double time = n * dt;
 		fprintf_s(fin, "%10.8lf %10.8lf %10.8lf \n", time, z, w);
 
-		S = 0;
-		F_w = c_w * rho / 2. * w * w *A;
 
-		kw1 = (S - F_w - G) / m;
-		w1 = w + kw1 * dt;
-		kz1 = w1;
-		z1 = z + kz1 * dt;
+	} while (z > 0 && n<10000);
 
-		F_w = c_w * rho / 2. * w1 * w1 *A;
+	
 
-		kw2 = (S - F_w - G) / m;
-		w2 = w1 + kw2 * dt / 2.;
-		kz2 = w2;
-		z2 = z1 + kz2 * dt / 2.;
-
-		F_w = c_w * rho / 2. * w2 * w2 *A;
-
-		kw3 = (S - F_w - G) / m;
-		w3 = w2 + kw3 * dt / 2.;
-		kz3 = w3;
-		z3 = z2 + kz3 * dt / 2.;
-
-		F_w = c_w * rho / 2. * w3 * w3 *A;
-
-		kw4 = (S - F_w - G) / m;
-		w4 = w3 + kw4 * dt;
-		kz4 = w4;
-		z4 = z3 + kz4 * dt;
-
-		kz = 1. / 6.*(kz1 + 2 * kz2 + 2 * kz3 + kz4);
-		kw = 1. / 6.*(kw1 + 2 * kw2 + 2 * kw3 + kw4);
-
-		z = z + kz * dt;
-		w = w + kw * dt;
-
-		n++;
-
-
-	} while (z>0.);
 	fclose(fin);
 }
 
