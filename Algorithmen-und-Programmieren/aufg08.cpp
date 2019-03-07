@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <math.h>
 
+void tomy(int il, int iu, double*b, double*d, double*a, double*c, double*l);
 void Gauss_seid(double *b, double *d, double *a, double*u, double *RHS, int n);
 
 void main()
@@ -20,6 +21,7 @@ void main()
 	// Teil 2
 	// [b d a]//
 	int n = 100;
+	double L_max = 1.0, L_min = 0.0;
 	double *a, *b, *d, *u, *RHS;
 	a = new double[n];
 	b = new double[n];
@@ -27,7 +29,7 @@ void main()
 	u = new double[n];
 	RHS = new double[n];
 
-	double delta_y = 0.1;
+	double delta_y = (L_max-L_min)/(n-1);
 
 	for (int i = 0; i < n; i++)
 	{
@@ -38,12 +40,23 @@ void main()
 	}
 	b[0] = 0;
 	a[n-1] = 0;
+	/*
+	a[0] = 0.;
+	d[0] = 1.;
+	b[0] = 0.;
+	RHS[0] = -pow(delta_y, 2);
+	a[n - 1] = 0.;
+	d[n - 1] = 1.;
+	b[n - 1] = 0.;
+	RHS[n - 1] = -pow(delta_y, 2);
+	*/
 
 	FILE *fin;
 
 	fopen_s(&fin, "aufg08.dat", "w");
 
 	Gauss_seid(b, d, a, u, RHS, n);
+	// tomy(0, n - 1, b, d, a, RHS, u);
 
 	for (int i = 0; i < n; i++)
 	{
@@ -57,6 +70,7 @@ void main()
 	delete[] u;
 	delete[] RHS;
 }
+
 
 void Gauss_seid(double *b, double *d, double *a, double*u, double *RHS, int n)
 {
@@ -96,5 +110,28 @@ void Gauss_seid(double *b, double *d, double *a, double*u, double *RHS, int n)
 	} while (R > 0.01);
 
 	delete[] r;
+}
+
+void tomy(int il, int iu, double*b, double*d, double*a, double*c, double*l) 
+{
+	for (int i = il + 1; i <= iu; i++) {
+		d[i] = d[i] - a[i - 1] * b[i] / d[i - 1];
+		c[i] = c[i] - c[i - 1] * b[i] / d[i - 1];
+	}
+	l[iu] = c[iu] / d[iu];
+	for (int m = iu - 1; m >= il; m--) {
+		l[m] = (c[m] - a[m] * l[m + 1]) / d[m];
+	}
+
+	/*
+	int m;
+	for (int i = 1; i <= (iu - il); i++)
+	{
+		m = iu - i;
+		l[m] = (c[m] - a[m] * l[m + 1]) / d[m];
+	}
+
+	return;
+	*/
 }
 

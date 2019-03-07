@@ -37,7 +37,7 @@ void main()
 	int count = 0;
 	do
 	{
-		v1 = v;
+		v1 = v; // not add deltaT
 		a1 = g - ((cw1*rho / 2 * v1*v1*A) / m);
 		
 		v2 = v + a1 * dt / 2;
