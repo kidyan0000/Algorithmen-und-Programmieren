@@ -17,10 +17,10 @@ void main()
 			
 			x0 = x - dx;
 
-			double y0 = -pow(x0, 5) - 40.*pow(x0, 2) + x0 + 7.; // calculate the residuum
+			y = -pow(x0, 5) - 40.*pow(x0, 2) + x0 + 7.; // calculate the residuum
 
 
-			printf_s("%lf %lf \n", y0, x0);
+			printf_s("%lf %lf \n", y, x0);
 		
 
 		} while (fabs(y) > 1.e-8); // abs value
