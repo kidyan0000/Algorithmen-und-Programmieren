@@ -95,48 +95,104 @@ void main()
 	delete[] coef;
 
 	*/
+	int n = 5;
+	double *RHS, *coef, *r, *a;
+	RHS = new double[n];
+	r = new double[n];
+	a = new double[n];
+	coef = new double[n*n];
 
-	double *RHS, *coef, *a, *r;
-	RHS = new double[count];
-	a = new double[count];
-	r = new double[count];
-	coef = new double[count*count];
+	
 
-	int cc = 0;
-	for (int i = 0; i < count; i++)
+	
+	for (int i = 0; i < n*n; i++)
 	{
-		RHS[i] = y[i];
-		for (int j = 0; j < count; j++)
-		{
-			coef[cc + j] = pow(x[i], j);
-		}
-		coef[cc] = sqrt(x[i]);
-		cc = cc + count;
+		coef[i] = 0.;
 	}
 
-	// gauss(coef, a, RHS, count, count);
+	for (int i = 0; i < n; i++)
+	{
+		RHS[i] = 0.;
+		for (int k = 1; k < count; k++)
+		{
+			if (i == 0)
+			{
+				RHS[i] = RHS[i] + y[k] * sqrt(x[k]);
+			}
+			else
+			{
+				RHS[i] = RHS[i] + y[k] * pow(x[k], i);
+			}
+			
+		}	
+		
+		
+	}
+
+	for (int k = 0; k < n; k++)
+	{
+			for (int i = 0; i < n; i++)
+			{
+				for (int j = 0; j < count; j++)
+				{
+					if (k == 0)
+					{
+						if (i == 0)
+						{
+							coef[n*k + i] = coef[n*k + i] + sqrt(x[j])* sqrt(x[j]);
+						}
+						else
+						{
+							coef[n*k + i] = coef[n*k + i] + pow(x[j], i)* sqrt(x[j]);
+						}
+					}
+					else
+					{
+						if (i == 0)
+						{
+							coef[n*k + i] = coef[n*k + i] + pow(x[j], k)* sqrt(x[j]);
+						}
+						else
+						{
+							coef[n*k + i] = coef[n*k + i] + pow(x[j], k)*  pow(x[j], i);
+						}
+					}
+				}
+
+			}			
+
+	}
+
+
+	gauss(coef, a, RHS, n, n);
 
 	fopen_s(&fin, "aufg04_koef.dat", "w");
-	for (int i = 0; i < count*count; i++)
+	for (int i = 0; i < n*n; i++)
 	{
 		fprintf_s(fin, "%lf \n", coef[i]);
 	}
 	fclose(fin);
 	
 	fopen_s(&fin, "aufg04_RHS.dat", "w");
-	for (int i = 0; i < count; i++)
+	for (int i = 0; i < n; i++)
 	{
 		fprintf_s(fin, "%lf \n", RHS[i]);
 	}
 	fclose(fin);
-	
+
+	fopen_s(&fin, "aufg04_results.dat", "w");
+	for (int i = 0; i < n; i++)
+	{
+		fprintf_s(fin, "%10.5lf \n", a[i]);
+	}
+	fclose(fin);
 
 	delete[] x;
 	delete[] y;
-	delete[] a;
 	delete[] r;
 	delete[] RHS;
 	delete[] coef;
+	delete[] a;
 }
 
 void gauss(double *m, double *x, double *r, int n, int nax)
