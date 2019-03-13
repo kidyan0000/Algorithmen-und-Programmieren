@@ -38,6 +38,11 @@ void main()
 		a[i] = 1; // a[n] loeschen
 		RHS[i] = -pow(delta_y, 2);
 	}
+
+	// M[i*(num-2)+i] = -2    d
+	// M[i*(num-2)+i-1] = 1;  b
+	// M[i*(num-2)+i+1] = 1;  a
+	
 	b[0] = 0;
 	a[n-1] = 0;
 	/*

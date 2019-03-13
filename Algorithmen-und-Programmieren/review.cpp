@@ -78,7 +78,46 @@ void main()
 	} while (H > H2);
 
 	*/
-	
+	/*
+	for(int i=1; i<=m_zeit; i++){
+		// Implizite FDM
+		// Koeffizienten des Gleichungssystems
+		for (int j=0; j<m; j++){
+			aa[j] = bb[j] = -a * dt/(dx*dx);
+			dd[j] = 1. + 2. * a *dt/(dx*dx) + alpha * u/(rho * A * c) * dt;
+			RHS[j] = alpha * u * dt / (rho * A * c) * Tu + T_old[j];
+		}
+		// Randbedingungen
+		aa[0] = 0.;
+		bb[0] = 0.;
+		dd[0] = 1.;
+		RHS[0] = Ta;
+		aa[m-1] = 0.;
+		bb[m-1] = 0.;
+		dd[m-1] = 1.;
+		RHS[m-1] = Tu;
+		// Gleichungssystem lösen
+		tomy(0, m-1, bb, dd, aa, RHS, T_new);
+		
+		for(int j=0; j<m; j++){
+			T_old[j] = T_new[j];
+			fprintf(james, "%20.7lf", T_new[j]);
+		}
+		fprintf(james, "\n");
+	}*/
+	/*
+		for(int i=0; i<n; i++)
+	{
+		d[i] = -2.;
+		a[i] = 1.;
+		b[i] = 1.;
+		x[i] = i*dx;
+		RHS[i] = (q0*l*x[i]*dx*dx) / (E*J*6.) + (pow(x[i]/l, 2) - 1.);
+	}
+	tomy (1, n-2, b, d, a, RHS, w);
+	w[0] = 0.;
+	w[n-1] = 0.;
+	*/
 	
 	
 	
